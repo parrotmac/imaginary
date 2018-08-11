@@ -34,6 +34,7 @@ var (
 	aAllowedOrigins     = flag.String("allowed-origins", "", "Restrict remote image source processing to certain origins (separated by commas)")
 	aMaxAllowedSize     = flag.Int("max-allowed-size", 0, "Restrict maximum size of http image source (in bytes)")
 	aKey                = flag.String("key", "", "Define API key for authorization")
+	aHttpMount					= flag.String("http-mount", "", "Define a HTTP[S] path to prepend to all requests, such as for S3 or similar")
 	aMount              = flag.String("mount", "", "Mount server local directory")
 	aCertFile           = flag.String("certfile", "", "TLS certificate file path")
 	aKeyFile            = flag.String("keyfile", "", "TLS private key file path")
@@ -136,6 +137,7 @@ func main() {
 		Concurrency:        *aConcurrency,
 		Burst:              *aBurst,
 		Mount:              *aMount,
+		HttpMount:					*aHttpMount,
 		CertFile:           *aCertFile,
 		KeyFile:            *aKeyFile,
 		Placeholder:        *aPlaceholder,

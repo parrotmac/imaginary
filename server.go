@@ -29,6 +29,7 @@ type ServerOptions struct {
 	PathPrefix         string
 	APIKey             string
 	Mount              string
+	HttpMount					 string
 	CertFile           string
 	KeyFile            string
 	Authorization      string
