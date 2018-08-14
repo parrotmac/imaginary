@@ -309,6 +309,7 @@ Options:
   -disable-endpoints        Comma separated endpoints to disable. E.g: form,crop,rotate,health [default: ""]
   -key <key>                Define API key for authorization
   -mount <path>             Mount server local directory
+  -http-mount <path>        Use specified HTTP[S] path to source all requests. Works by prepending given url to requested image path
   -http-cache-ttl <num>     The TTL in seconds. Adds caching headers to locally served files.
   -http-read-timeout <num>  HTTP read timeout in seconds [default: 30]
   -http-write-timeout <num> HTTP write timeout in seconds [default: 30]
