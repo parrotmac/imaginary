@@ -34,7 +34,7 @@ var (
 	aAllowedOrigins     = flag.String("allowed-origins", "", "Restrict remote image source processing to certain origins (separated by commas)")
 	aMaxAllowedSize     = flag.Int("max-allowed-size", 0, "Restrict maximum size of http image source (in bytes)")
 	aKey                = flag.String("key", "", "Define API key for authorization")
-	aHttpMount					= flag.String("http-mount", "", "Define a HTTP[S] path to prepend to all requests, such as for S3 or similar")
+	aHttpMount					= flag.String("http-mount", "", "Define a HTTP[S] path to prepend to all http requests, such as for S3 or similar")
 	aMount              = flag.String("mount", "", "Mount server local directory")
 	aCertFile           = flag.String("certfile", "", "TLS certificate file path")
 	aKeyFile            = flag.String("keyfile", "", "TLS private key file path")
@@ -79,6 +79,7 @@ Options:
   -disable-endpoints        Comma separated endpoints to disable. E.g: form,crop,rotate,health [default: ""]
   -key <key>                Define API key for authorization
   -mount <path>             Mount server local directory
+  -http-mount <path>        Use specified HTTP[S] path to source all requests. Works by prepending given url to requested image path 
   -http-cache-ttl <num>     The TTL in seconds. Adds caching headers to locally served files.
   -http-read-timeout <num>  HTTP read timeout in seconds [default: 30]
   -http-write-timeout <num> HTTP write timeout in seconds [default: 30]

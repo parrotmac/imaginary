@@ -23,14 +23,18 @@ func (s *HttpImageSource) Matches(r *http.Request) bool {
 }
 
 func (s *HttpImageSource) GetImage(req *http.Request) ([]byte, error) {
-	url, err := parseURL(req)
+	requestedURL, err := parseURL(req)
 	if err != nil {
 		return nil, ErrInvalidImageURL
 	}
-	if shouldRestrictOrigin(url, s.Config.AllowedOrigings) {
-		return nil, fmt.Errorf("Not allowed remote URL origin: %s", url.Host)
+	parsedURL, err := url.Parse(fmt.Sprintf("%s%s", s.Config.HttpMountPath, requestedURL))
+	if err != nil {
+		return nil, ErrInvalidHttpMountURL
 	}
-	return s.fetchImage(url, req)
+	if shouldRestrictOrigin(parsedURL, s.Config.AllowedOrigings) {
+		return nil, fmt.Errorf("Not allowed remote URL origin: %s", parsedURL.Host)
+	}
+	return s.fetchImage(parsedURL, req)
 }
 
 func (s *HttpImageSource) fetchImage(url *url.URL, ireq *http.Request) ([]byte, error) {

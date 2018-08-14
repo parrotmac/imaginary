@@ -31,6 +31,7 @@ var (
 	ErrMissingParamFile     = NewError("Missing required param: file", BadRequest)
 	ErrInvalidFilePath      = NewError("Invalid file path", BadRequest)
 	ErrInvalidImageURL      = NewError("Invalid image URL", BadRequest)
+	ErrInvalidHttpMountURL  = NewError("Invalid http mount URL", BadRequest)
 	ErrMissingImageSource   = NewError("Cannot process the image due to missing or invalid params", BadRequest)
 	ErrNotImplemented       = NewError("Not implemented endpoint", NotImplemented)
 	ErrInvalidURLSignature  = NewError("Invalid URL signature", BadRequest)
